@@ -81,7 +81,7 @@ DATABASES = {
     }
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'demoldb',
+    #     'NAME': 'dbdemo1',
     #     'USER':'root',
     #     'PASSWORD':'wang123*',
     # }
