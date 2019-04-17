@@ -16,5 +16,17 @@ class HeroInfo(models.Model):
     def __str__(self):
         return self.hname
 
+    def skill(self):
+        return self.hcontent
+    skill.short_description = "绝招"
+
+    def sex(self):
+        return self.hgender
+    sex.short_description = "性别"
+
+    def name(self):
+        return  self.hname
+    name.short_description = "角色"
+
 
 
