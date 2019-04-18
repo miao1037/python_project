@@ -8,15 +8,22 @@
     <ul>
         {% for book in booklist %}
             {#<li><a href="/booktest/detail/{{book.id}}">{{book.Btitle}}</a></li>#}
-            <li><a href="{% url 'booktest:detail' book.id %}">{{book.Btitle}}</a></li>
+
+            <span><a href="{% url 'booktest:detail' book.id %}">{{book.Btitle}}</a></span>
+            <a href="{% url 'booktest:delete' book.id %}"><button style="button">删除</button></a>
+
+            <br>
 
         {% empty %}
 
         {% endfor %}
 
     </ul>
+
     {#<a href="/booktest/index/">进入首页</a>#}
+
     <a href="{% url 'booktest:index' %}">进入首页</a>
+
 
 </body>
 </html>
