@@ -27,4 +27,5 @@ def poll(request,cid,qid):
     ques = Questions.objects.get(pk=qid)
     cont = {"ques": ques}
     return render(request, 'polls/detail.html', cont)
+    # return HttpResponseRedirect('/polls/detail/', cont)
 
