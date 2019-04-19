@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>列表页</title>
+    <link rel="stylesheet" href="/static/css/reset.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+
+    <script src="/static/js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 <body>
+    <h3>图书列表</h3>
     <ul>
         {% for book in booklist %}
             {#<li><a href="/booktest/detail/{{book.id}}">{{book.Btitle}}</a></li>#}
 
             <span><a href="{% url 'booktest:detail' book.id %}">{{book.Btitle}}</a></span>
-            <a href="{% url 'booktest:delete' book.id %}"><button style="button">删除</button></a>
 
+            {# <a href="{% url 'booktest:delete' book.id %}"><button style="button">删除</button></a> #}
+            <button type="button" class="btn btn-warning"><a href="{% url 'booktest:delete' book.id %}">删除</a></button>
+ <p></p>
             <br>
 
         {% empty %}
@@ -19,6 +28,8 @@
         {% endfor %}
 
     </ul>
+    <a href="{% url 'booktest:addbook' %}">添加图书</a><br>
+    <p></p>
 
     {#<a href="/booktest/index/">进入首页</a>#}
 

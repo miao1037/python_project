@@ -6,7 +6,7 @@ from django.template import loader
 # Create your views here.
 
 
-def index(requset):
+def index(request):
     # print("请求",requset)
     # return HttpResponse("首页")
 
@@ -19,9 +19,9 @@ def index(requset):
     # return HttpResponse(result)
 
     cont = {"username":"miao"}
-    return render(requset,'booktest/index.html',cont)
+    return render(request,'booktest/index.html',cont)
 
-def list(requset):
+def list(request):
     # return HttpResponse("列表页")
 
     # listtem = loader.get_template('booktest/list.html')
@@ -31,10 +31,10 @@ def list(requset):
     # return HttpResponse(result)
     booklist = BookInfo.objects.all()
     cont = {"booklist": booklist}
-    return render(requset,'booktest/list.html',cont)
+    return render(request,'booktest/list.html',cont)
 
 
-def detail(requset,id):
+def detail(request,id):
     # try:
     #     book = BookInfo.objects.get(pk = int(id))
     #     return HttpResponse(book)
@@ -52,9 +52,9 @@ def detail(requset,id):
 
     book = BookInfo.objects.get(pk=id)
     cont = {"book":book}
-    return render(requset,'booktest/detail.html',cont)
+    return render(request,'booktest/detail.html',cont)
 
-def delete(requset,id):
+def delete(request,id):
     try:
         BookInfo.objects.get(pk=id).delete()
         booklist = BookInfo.objects.all()
@@ -65,8 +65,19 @@ def delete(requset,id):
     except:
         return HttpResponse('删除失败')
 
-def addhero(requset,bookid):
-    return render(requset,'booktest/addhero.html',{"bookid":bookid})
+def addbook(request):
+    return render(request, 'booktest/addbook.html')
+
+
+def addbookhandler(request):
+    btitle = request.POST['btitle']
+    book = BookInfo()
+    book.Btitle = btitle
+    book.save()
+    return HttpResponseRedirect('/booktest/list/')
+
+def addhero(request,bookid):
+    return render(request,'booktest/addhero.html',{"bookid":bookid})
 
 def addherohandler(request):
     bookid = request.POST["bookid"]
